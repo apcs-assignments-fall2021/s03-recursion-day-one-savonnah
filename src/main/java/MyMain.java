@@ -23,21 +23,42 @@ public class MyMain {
     // arithmeticSequence(4) => 9
     // arithmeticSequence(1) => 3
     public static int arithmeticSequence(int n) {
-        // YOUR CODE HERE
-        return -1;
+        if (n==1){
+            return 3;
+        }
+        else{
+            return (arithmeticSequence(n-1)+2);
+        }
     }
 
     // Write a method that uses recursion to count the number
     // of times lowercase 'x' shows up in a String
     // Examples:
     // countX("hix") => 1
+    // countX("ix") => 1
+    // countX("x") =>
+    // make input smaller by removing first letter of the string
     // countX("xoxo") => 2
 
     // Hint: to make the subproblem smaller, make the String shorter!
     // Hint 2: multiple recursive cases might be helpful!
     public static int countX(String str) {
-        // YOUR CODE HERE
-        return -1;
+        if (str.length()==0){ //no string = no x's
+            return 0;
+        }
+        else if (str.charAt(0)=='x'){ //check if first letter is 'x'
+            return 1 + countX(str.substring(1)); //chops off first letter
+        }
+        else{ //represents the case where first letter isnt x so 0 + count rest of x's
+            return countX(str.substring(1));
+        }
+//        if(str.length(str.substring(0,str.length()))==0){
+//            return 0;
+//        }
+//        else{
+//            return (1+countX(str+1));
+//        }
+//        return -1;
     }
 
 
@@ -52,8 +73,12 @@ public class MyMain {
     // exponent(5, 2) = 5 * 5 = 25
     // exponent(4, 0) = 1
     public static int exponent(int base, int power) {
-        // YOUR CODE HERE
-        return -1;
+        if(power==0){
+            return 1;
+        }
+        else{
+            return (base*exponent(base,power-1));
+        }
     }
 
     // Write a method that uses recursion to count the number
@@ -62,8 +87,18 @@ public class MyMain {
     // countHi("hix") => 1
     // countHi("hellohihi") => 2
     public static int countHi(String str) {
-        // YOUR CODE HERE
-        return -1;
+        if (str.length()==0){ //no string = no x's
+            return 0;
+        }
+        if (str.length()==1){ //no string = no x's
+            return 0;
+        }
+        else if (str.substring(0,2).equals("hi")){ //check if first letter is 'x'
+            return 1 + countHi(str.substring(2,str.length())); //chops off first letter
+        }
+        else{ //represents the case where first letter isnt x so 0 + count rest of x's
+            return countHi(str.substring(1,str.length()));
+        }
     }
 
 
